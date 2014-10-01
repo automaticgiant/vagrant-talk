@@ -47,5 +47,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Use VBoxManage to customize the VM. For example to change memory:
     # vb.customize ["modifyvm", :id, "--memory", "1024"]
   end
-  #
+
+$script = <<EOF
+sed s:archive.ubuntu.com/ubuntu:mirror.cc.vt.edu/pub2/ubuntu: \
+  /etc/apt/sources.list | sudo tee /etc/apt/sources.list > /dev/null
+sudo apt-get update
+# sudo apt-get upgrade -y
+EOF
+
+config.vm.provision "shell", inline: $script
+
 end
