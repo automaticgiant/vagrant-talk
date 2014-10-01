@@ -53,7 +53,6 @@ sed s:archive.ubuntu.com/ubuntu:mirror.cc.vt.edu/pub2/ubuntu: \
   /etc/apt/sources.list | sudo tee /etc/apt/sources.list > /dev/null
 sudo apt-get update
 # sudo apt-get upgrade -y
-apt-get moo
 EOF
 
 config.vm.provision "shell", inline: $script
